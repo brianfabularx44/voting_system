@@ -37,6 +37,7 @@ namespace ELNET.Models
                         colleges.Add(college);
                     }
                 }
+                reader.Close();
             }
             catch(Exception ex)
             {

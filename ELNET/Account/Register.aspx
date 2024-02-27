@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" Async="true"%>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <p class="text-danger">
@@ -39,7 +39,7 @@
 
             <asp:Label runat="server" AssociatedControlID="Password" CssClass="control-label">Password</asp:Label>
             <div class="col-sm-12 ">
-                <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
+                <asp:TextBox runat="server" ID="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="The password field is required." />
             </div>
@@ -54,19 +54,19 @@
                 <div class="col-sm-12 col-md-4">
                     <asp:Label runat="server" CssClass="control-label">Choose Program</asp:Label>
 
-                    <asp:DropDownList ID="ProgramDropdown" runat="server" CssClass="dropdown form-control">
+                    <asp:DropDownList ID="ProgramDropdown" AutoPostBack="false" runat="server" CssClass="dropdown form-control">
                     </asp:DropDownList>
                 </div>
 
                 <div class="col-sm-12 col-md-4">
                 <asp:Label runat="server" CssClass="control-label">Year Level</asp:Label>
 
-                <asp:DropDownList ID="YearLevelDropDown" runat="server" CssClass="dropdown form-control">
+                <asp:DropDownList ID="YearLevelDropDown" AutoPostBack="false" runat="server" CssClass="dropdown form-control">
                     <asp:ListItem Value= “-1”>Year Level</asp:ListItem>
-                    <asp:ListItem Value=”1”>1</asp:ListItem>
-                    <asp:ListItem Value=”2”>2</asp:ListItem>
-                    <asp:ListItem Value=”3”>3</asp:ListItem>
-                    <asp:ListItem Value=”4”>4</asp:ListItem>
+                    <asp:ListItem Value=1>1</asp:ListItem>
+                    <asp:ListItem Value=2>2</asp:ListItem>
+                    <asp:ListItem Value=3>3</asp:ListItem>
+                    <asp:ListItem Value=3>4</asp:ListItem>
                 </asp:DropDownList>
             </div>
             </div>

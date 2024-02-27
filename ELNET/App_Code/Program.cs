@@ -37,6 +37,7 @@ public class Program
                     programs.Add(program);
                 }
             }
+            reader.Close();
         }
         catch (Exception ex)
         {

@@ -9,12 +9,12 @@ using System.Web.Services.Description;
 using ELNET.Models;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity.EntityFramework;
 public partial class Account_Register : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("init");
-
+        
         if (!IsPostBack)
         {
             ProgramDropdown.Items.Add(new ListItem("Select Program", "-1"));
@@ -35,14 +35,11 @@ public partial class Account_Register : Page
         string firstName = FirstName.Text;
         string lastName = LastName.Text;
         string password = Password.Text;
-        var manager = new UserManager();
-        var user = new ApplicationUser() { UserName = idNumber };
-        IdentityResult result = manager.Create(user, password);
-        if (result.Succeeded)
-        {
-            IdentityHelper.SignIn(manager, user, isPersistent: false);
-            string query = "INSERT INTO users (firstName, lastName, idNumber, password) " +
-                       "VALUES (@FirstName, @LastName, @IdNumber, @Password);";
+        string programId = CollegeDropdown.SelectedValue;
+        string yrLevel = YearLevelDropDown.SelectedValue;
+        
+            string query = "INSERT INTO users (firstName, lastName, idNumber, password, programId, yrLevel) " +
+                       "VALUES (@FirstName, @LastName, @IdNumber, @Password, @ProgramId, @YearLevel);";
             try
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["RegiConnectionString"].ConnectionString);
@@ -52,45 +49,25 @@ public partial class Account_Register : Page
                 command.Parameters.AddWithValue("@LastName", lastName);
                 command.Parameters.AddWithValue("@IdNumber", idNumber);
                 command.Parameters.AddWithValue("@Password", password); // Assuming password is constant for demonstration purposes
+                command.Parameters.AddWithValue("@ProgramId", int.Parse(programId)); // Assuming password is constant for demonstration purposes
+                command.Parameters.AddWithValue("@YearLevel", yrLevel); // Assuming password is constant for demonstration purposes
                 command.ExecuteNonQuery();
                 conn.Close();
+                var manager = new UserManager();
+                var user = new ApplicationUser() { UserName = idNumber };
+                IdentityResult result = manager.Create(user, password);
+                IdentityHelper.SignIn(manager, user, isPersistent: false);
                 IdentityHelper.RedirectToReturnUrl("~/Default.aspx", Response);
             }
             catch (Exception ex)
             {
                 FailureText.Text = ex.Message;
             }
-        }
-        else
-        {
-            FailureText.Text = "Invalid username or password.";
-            foreach (var error in result.Errors)
-            {
-                FailureText.Text += "<br />" + error;
-            }
-
-
-            /*
-                    var manager = new UserManager();
-                    var user = new ApplicationUser() { UserName = UserName.Text };
-                    IdentityResult result = manager.Create(user, Password.Text);
-                    if (result.Succeeded)
-                    {
-                        IdentityHelper.SignIn(manager, user, isPersistent: false);
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                    }
-                    else
-                    {
-                        ErrorMessage.Text = result.Errors.FirstOrDefault();
-                    }
-                    */
-        }
     }
 
     protected void CollegeSelectionChange(object sender, EventArgs e)
     {
         ProgramDropdown.Items.Clear();  
-        string selected = CollegeDropdown.SelectedValue;
         List<Program> programs= new Program().getProgramsOfCollegeId(int.Parse(CollegeDropdown.SelectedValue));
 
         foreach (Program program in programs)

@@ -47,13 +47,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-4">
                     <asp:Label runat="server" AssociatedControlID="CollegeDropdown" CssClass="control-label">Choose College</asp:Label>
-
-                    <asp:DropDownList ID="CollegeDropdown" runat="server" CssClass="dropdown form-control">
-                        <asp:ListItem Value= “-1”>Select College</asp:ListItem>
-
-                        <asp:ListItem Value=”1”>Computer Studies</asp:ListItem>
-
-                        <asp:ListItem Text=Engineering Value=”2”></asp:ListItem>
+                    <asp:DropDownList ID="CollegeDropdown" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CollegeSelectionChange" CssClass="dropdown form-control">
                     </asp:DropDownList>
                 </div>
 
@@ -61,11 +55,6 @@
                     <asp:Label runat="server" CssClass="control-label">Choose Program</asp:Label>
 
                     <asp:DropDownList ID="ProgramDropdown" runat="server" CssClass="dropdown form-control">
-                        <asp:ListItem Value= “-1”>Select Program</asp:ListItem>
-
-                        <asp:ListItem Value=”1”>Computer Science</asp:ListItem>
-
-                        <asp:ListItem Value=”2”>Information Technology</asp:ListItem>
                     </asp:DropDownList>
                 </div>
 

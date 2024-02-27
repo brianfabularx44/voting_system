@@ -44,5 +44,6 @@ namespace ELNET.Models
             }
             return colleges;
         }
+
     }
 }

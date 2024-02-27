@@ -33,7 +33,7 @@ public partial class Account_Login : Page
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@IdNumber", idnumberValue);
                 command.Parameters.AddWithValue("@Password", passwordValue);
-            SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     var userManager = new UserManager();
@@ -43,11 +43,11 @@ public partial class Account_Login : Page
                         IdentityHelper.SignIn(userManager, user, isPersistent: true);
                         IdentityHelper.RedirectToReturnUrl("~/Default.aspx", Response);
                     }
-            }
-            else
-            {
-                FailureText.Text = "Incorrect Password";
-            }
+                }
+                else
+                {
+                    FailureText.Text = "Incorrect Password";
+                }
              conn.Close();
 
             }catch (Exception ex)

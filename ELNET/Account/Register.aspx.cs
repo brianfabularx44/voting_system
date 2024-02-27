@@ -5,9 +5,30 @@ using System.Web.UI;
 using ELNET;
 using System.Configuration;
 using System.Data.SqlClient;
-
+using System.Web.Services.Description;
+using ELNET.Models;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 public partial class Account_Register : Page
 {
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        System.Diagnostics.Debug.WriteLine("init");
+
+        if (!IsPostBack)
+        {
+            ProgramDropdown.Items.Add(new ListItem("Select Program", "-1"));
+            List<College> colleges = new College().getColleges();
+            CollegeDropdown.Items.Add(new ListItem("Select College", "-1"));
+            foreach (College college in colleges)
+            {
+                ListItem item = new ListItem(college.CollegeName, college.Id + "");
+                CollegeDropdown.Items.Add(item);
+            }
+            CollegeDropdown.DataBind();
+        }
+        
+    }
     protected void CreateUser_Click(object sender, EventArgs e)
     {
         string idNumber = IDNumber.Text;
@@ -64,5 +85,20 @@ public partial class Account_Register : Page
                     }
                     */
         }
+    }
+
+    protected void CollegeSelectionChange(object sender, EventArgs e)
+    {
+        ProgramDropdown.Items.Clear();  
+        string selected = CollegeDropdown.SelectedValue;
+        List<Program> programs= new Program().getProgramsOfCollegeId(int.Parse(CollegeDropdown.SelectedValue));
+
+        foreach (Program program in programs)
+        {
+            ListItem item = new ListItem(program.programName, program.Id + "");
+            ProgramDropdown.Items.Add(item);
+        }
+        ProgramDropdown.DataBind();
+
     }
 }

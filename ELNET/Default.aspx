@@ -12,7 +12,7 @@
                           <img src="assets/uccp_logo.jpg" class="card-img-top" alt="..." style="height: 12vw; object-fit: cover; width: 100%">
                           <div class="card-body row align-items-center">
                             <h5 class="col">Jewel Partylist</h5>
-                            <a href="#" class="btn-sm btn text-white col-4 me-1" style="background-color: #BB9237">See more</a>
+                            <a href="/PartylistDetail" class="btn-sm btn text-white col-4 me-1" style="background-color: #BB9237">See more</a>
                           </div>
                         </div>
                     </div>

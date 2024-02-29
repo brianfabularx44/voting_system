@@ -6,8 +6,8 @@
             <div class="col-md-4">
                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select">
                     <asp:ListItem Text="All" Value="All"></asp:ListItem>
-                    <asp:ListItem Text="Party List 1" Value="Computer Studies"></asp:ListItem>
-                    <asp:ListItem Text="Party List 2" Value="Arts and Sciences"></asp:ListItem>
+                    <asp:ListItem Text="Computer Studies" Value="Computer Studies"></asp:ListItem>
+                    <asp:ListItem Text="Arts and Sciences" Value="Arts and Sciences"></asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="row col-md-6">

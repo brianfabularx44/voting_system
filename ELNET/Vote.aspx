@@ -36,7 +36,7 @@
                             <div class="row col-6 align-items-center">
                                 <img src="assets/uc_logo.jpg" class="col-4 img-thumbnail" width="50" height="50" style="object-fit: cover"/>
                                 <div class="form-check col-5 ms-2">
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
                                   <label class="form-check-label" for="flexRadioDefault1">
                                     Jewel Oniichan (BS Computer Science)
                                   </label>
@@ -46,7 +46,7 @@
                             <div class="row col-6 align-items-center">
                                 <img src="assets/uc_logo.jpg" class="col-4 img-thumbnail" width="50" height="50" style="object-fit: cover"/>
                                 <div class="form-check col-5 ms-2">
-                                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                  <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
                                   <label class="form-check-label" for="flexRadioDefault1">
                                     Jewel Oniichan (BS Computer Science)
                                   </label>
@@ -55,6 +55,9 @@
                         </div>
                 </div>
             </div>
+                <div class="text-center mt-5">
+                    <asp:Button CssClass="btn btn-primary" runat="server" Text="Submit"/>
+                </div>
         </div>
     </div>
 </asp:Content>

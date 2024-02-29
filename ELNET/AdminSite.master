@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminSite.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="container">
+            <asp:LoginView runat="server" ID="LoginView1">
+                <LoggedInTemplate>
+                </LoggedInTemplate>
+                
+                <AnonymousTemplate>
+                    <nav class="navbar navbar-dark border-bottom border-5 shadow-sm navbar-expand-lg fixed-top border-body" style="background-color: #BB9237;">
+                      <div class="container">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="mr-3">
+                            <img src="../assets/uc_logo.jpg" class="rounded-circle me-1" width="35" height="35" style="object-fit: cover"/>
+                            <img src="../assets/uccp_logo.jpg" class="rounded-circle" width="35" height="35" style="object-fit: cover"/>
+                        </div>
+                        <a class="navbar-brand ms-2" href="#">University of Cebu - Council of Presidents</a>
+                        <div class="d-flex collapse navbar-collapse " id="navbarTogglerDemo03">
+                          <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="Vote">Nigga</a>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton ID="logOUtBtn" runat="server" Text="Logout" CssClass="nav-link " />
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>
+                    <asp:ContentPlaceHolder ID="LogInContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </AnonymousTemplate>
+            
+            </asp:LoginView>
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            
+            
+        </div>
+    </form>
+</body>
+</html>
